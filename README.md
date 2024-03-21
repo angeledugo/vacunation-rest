@@ -18,10 +18,5 @@ Docker Debido a que se requiere  una base de datos, Docker te permite crear un c
 1. [Go](https://golang.org/dl/) (versión  1.16 o superior)
 
 
-2. Comandos Base de Datos
-cd /database
-docker build . -t vacunation-rest-db
-docker run -p 54321:5432 vacunation-rest-db
-
-3. Comandos para la aplicacion
+2. Comandos para la aplicacion
 docker-compose up -d
