@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+
+    ports:
+      - "5051:5050"
+    networks:
+      - mynet
+
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+
+    depends_on:
+      - postgres
+
+  postgres:
+    build: ./database 
+    ports:
+      - "5432:5432"
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
