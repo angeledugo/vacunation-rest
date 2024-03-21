@@ -75,14 +75,14 @@ func InsertDrugHandler(s server.Server) http.HandlerFunc {
 func GetDrugByIdHandler(s server.Server) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params := mux.Vars(r)
-		post, err := repository.GetDrugById(r.Context(), params["id"])
+		drug, err := repository.GetDrugById(r.Context(), params["id"])
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
 		w.Header().Set("Content-type", "application/json")
-		json.NewEncoder(w).Encode(post)
+		json.NewEncoder(w).Encode(drug)
 	}
 }
 
@@ -142,7 +142,7 @@ func ListDrugHandler(s server.Server) http.HandlerFunc {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 			}
 		}
-		drugs, err := repository.ListPost(r.Context(), page)
+		drugs, err := repository.ListDrug(r.Context(), page)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

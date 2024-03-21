@@ -40,9 +40,18 @@ func main() {
 func BindRoutes(s server.Server, r *mux.Router) {
 	r.HandleFunc("/signup", handlers.SignUpHandler(s)).Methods(http.MethodPost)
 	r.HandleFunc("/signin", handlers.LoginHandler(s)).Methods(http.MethodPost)
+
+	// Drugs routes
 	r.HandleFunc("/drugs", handlers.InsertDrugHandler(s)).Methods(http.MethodPost)
 	r.HandleFunc("/drugs/{id}", handlers.GetDrugByIdHandler(s)).Methods(http.MethodGet)
 	r.HandleFunc("/drugs/{id}", handlers.UpdateDrugHandler(s)).Methods(http.MethodPut)
 	r.HandleFunc("/drugs/{id}", handlers.DeleteDrugHandler(s)).Methods(http.MethodDelete)
 	r.HandleFunc("/drugs", handlers.ListDrugHandler(s)).Methods(http.MethodGet)
+
+	// Vaccination routes
+	r.HandleFunc("/vaccinations", handlers.InsertVaccinationHandler(s)).Methods(http.MethodPost)
+	r.HandleFunc("/vaccinations/{id}", handlers.GetVaccinationByIdHandler(s)).Methods(http.MethodGet)
+	r.HandleFunc("/vaccinations/{id}", handlers.UpdateVaccinationHandler(s)).Methods(http.MethodPut)
+	r.HandleFunc("/vaccinations/{id}", handlers.DeleteVaccinationHandler(s)).Methods(http.MethodDelete)
+	r.HandleFunc("/vaccinations", handlers.ListVaccinationHandler(s)).Methods(http.MethodGet)
 }

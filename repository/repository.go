@@ -15,6 +15,11 @@ type Repository interface {
 	UpdateDrug(ctx context.Context, drug *models.Drug) error
 	DeleteDrug(ctx context.Context, id string) error
 	ListDrug(ctx context.Context, page uint64) ([]*models.Drug, error)
+	InsertVaccination(ctx context.Context, drug *models.Vaccination) error
+	GetVaccinationById(ctx context.Context, id string) (*models.Vaccination, error)
+	UpdateVaccination(ctx context.Context, drug *models.Vaccination) error
+	DeleteVaccination(ctx context.Context, id string) error
+	ListVaccination(ctx context.Context, page uint64) ([]*models.Vaccination, error)
 }
 
 var implementation Repository
@@ -51,6 +56,26 @@ func DeleteDrug(ctx context.Context, id string) error {
 	return implementation.DeleteDrug(ctx, id)
 }
 
-func ListPost(ctx context.Context, page uint64) ([]*models.Drug, error) {
+func ListDrug(ctx context.Context, page uint64) ([]*models.Drug, error) {
 	return implementation.ListDrug(ctx, page)
+}
+
+func InsertVaccination(ctx context.Context, vaccination *models.Vaccination) error {
+	return implementation.InsertVaccination(ctx, vaccination)
+}
+
+func GetVaccinationById(ctx context.Context, id string) (*models.Vaccination, error) {
+	return implementation.GetVaccinationById(ctx, id)
+}
+
+func UpdateVaccination(ctx context.Context, vaccination *models.Vaccination) error {
+	return implementation.UpdateVaccination(ctx, vaccination)
+}
+
+func DeleteVaccination(ctx context.Context, id string) error {
+	return implementation.DeleteVaccination(ctx, id)
+}
+
+func ListVaccination(ctx context.Context, page uint64) ([]*models.Vaccination, error) {
+	return implementation.ListVaccination(ctx, page)
 }
